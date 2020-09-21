@@ -1,0 +1,7 @@
+#!/bin/sh
+CMD=$@
+WPATH=$(pwd)
+PROJ="${WPATH##*/}"
+
+#cd /var/www/html/bnc_factory && 
+docker-compose run --rm npm "yarn --cwd /var/www/html/$PROJ $CMD"

@@ -1,0 +1,6 @@
+#!/bin/bash
+CMD=$@
+WPATH=$(pwd)
+PROJ="${WPATH##*/}"
+
+docker-compose run --rm npm "npm $CMD --prefix /var/www/html/$PROJ"

@@ -1,0 +1,5 @@
+#!/bin/sh
+CMD=$@
+WPATH=$(pwd)
+PROJ="${WPATH##*/}"
+docker-compose run --rm composer $CMD -d /var/www/html/$PROJ

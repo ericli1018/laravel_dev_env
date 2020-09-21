@@ -1,0 +1,12 @@
+#!/bin/sh
+#docker-compose run --rm php myproject/artisan $@
+CMD=$@
+WPATH=$(pwd)
+PROJ="${WPATH##*/}"
+
+CONTAIN_ID=$(docker ps -aqf "name=^php_laravel_dev$")
+if [ "$CONTAIN_ID" = "" ]; then
+    echo "Docker container is not exist or running."
+else
+    docker exec -it $CONTAIN_ID php $PROJ/artisan $CMD
+fi
