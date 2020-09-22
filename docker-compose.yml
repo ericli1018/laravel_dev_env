@@ -66,16 +66,7 @@ services:
       - php
     networks:
       - laravel
-    
-  #npm:
-  #  build:
-  #    context: .
-  #    dockerfile: npm.dockerfile
-  #  image: "npm:laravel"
-  #  container_name: "npm"
-  #  volumes:
-  #    - ./src:/var/www/html
-  
+
   npm:
     image: node:12.18
     container_name: npm
@@ -83,25 +74,3 @@ services:
       - ./src:/var/www/html:delegated
     working_dir: /var/www/html
     entrypoint: ['/bin/bash', '-c']
-
-  #yarn:
-  #  image: node:13.7
-  #  container_name: yarn
-  #  volumes:
-  #    - ./src:/var/www/html
-  #  working_dir: /var/www/html
-  #  entrypoint: ['yarn']
-
-  # artisan:
-  #   build:
-  #     context: .
-  #     dockerfile: php.dockerfile
-  #   container_name: artisan
-  #   volumes:
-  #     - ./src:/var/www/html
-  #   depends_on:
-  #     - mysql
-  #   working_dir: /var/www/html
-  #   entrypoint: ['php', '/var/www/html/artisan']
-  #   networks:
-  #     - laravel
