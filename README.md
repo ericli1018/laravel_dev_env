@@ -83,10 +83,39 @@ server {
 - MacOS path `/etc/hosts`
 - Windows path `C:\windows\system32\drivers\etc\hosts`
 
-add follow script at last line, then save.
+Add the following script to the last line, then save.
 
 ```
 127.0.0.1 myproject.local
 ```
 
-follw up step, you can start your docker and browser http://myproject.local:8080
+## Use PHP XDebug in vscode
+
+In each project folder (./src/myproject), create `./src/myproject/.vscode/launch.json` file and add the following script.
+
+```
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Listen for XDebug",
+            "type": "php",
+            "request": "launch",
+            "port": 9001,
+            "pathMappings": {
+                "/var/www/html/${workspaceFolderBasename}": "${workspaceFolder}"
+            }
+        },
+        {
+            "name": "Launch currently open script",
+            "type": "php",
+            "request": "launch",
+            "program": "${file}",
+            "cwd": "${fileDirname}",
+            "port": 9001
+        }
+    ]
+}
+```
+
+Follow these steps to start your docker and browser http://myproject.local:8080
